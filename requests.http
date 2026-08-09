@@ -1,8 +1,17 @@
-### Register a new user
-POST http://127.0.0.1:5000/register
+### Login - correct credentials
+POST http://127.0.0.1:5000/login
 Content-Type: application/json
 
 {
   "username": "ronak123",
   "password": "mypassword123"
+}
+
+### Login - wrong password
+POST http://127.0.0.1:5000/login
+Content-Type: application/json
+
+{
+  "username": "ronak123",
+  "password": "wrongpassword"
 }
