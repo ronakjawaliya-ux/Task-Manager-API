@@ -1,0 +1,8 @@
+### Register a new user
+POST http://127.0.0.1:5000/register
+Content-Type: application/json
+
+{
+  "username": "ronak123",
+  "password": "mypassword123"
+}
