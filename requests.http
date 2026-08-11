@@ -15,3 +15,33 @@ Content-Type: application/json
   "username": "debuguser",
   "password": "debugpass123"
 }
+
+
+### Create a task
+POST http://127.0.0.1:5000/tasks
+Content-Type: application/json
+Authorization: c591fce228551841f3aa6765cef264c1
+
+{
+  "title": "Finish Flask project"
+}
+
+
+### Get my tasks
+GET http://127.0.0.1:5000/tasks
+Authorization: c591fce228551841f3aa6765cef264c1
+
+
+### Mark task complete
+PUT http://127.0.0.1:5000/tasks/1
+Content-Type: application/json
+Authorization: 3f00d03f064fa5a09452209c4f985bf2
+
+{
+  "completed": 1
+}
+
+
+### Delete task
+DELETE http://127.0.0.1:5000/tasks/1
+Authorization: 5c8ece89e98edbf83124d5bd1e1f3ad0
