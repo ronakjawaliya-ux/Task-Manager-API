@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 import sqlite3
 import hashlib
 import secrets
+from werkzeug.security import generate_password_hash, check_password_hash
 app = Flask(__name__)
 
 def get_db_connection():
@@ -22,7 +23,7 @@ def register():
     if not username or not password:
         return jsonify({"error": "Username and password are required"}), 400
 
-    password_hash = hashlib.sha256(password.encode()).hexdigest()
+    password_hash = generate_password_hash(password)
 
     conn = get_db_connection()
     try:
@@ -51,7 +52,6 @@ def login():
     if not username or not password:
         return jsonify({"error": "Username and password are required"}), 400
 
-    password_hash = hashlib.sha256(password.encode()).hexdigest()
 
     conn = get_db_connection()
     user = conn.execute(
@@ -59,7 +59,7 @@ def login():
     ).fetchone()
     conn.close()
 
-    if user is None or user["password_hash"] != password_hash:
+    if user is None or not check_password_hash(user["password_hash"], password):
         return jsonify({"error": "Invalid username or password"}), 401
 
     token = secrets.token_hex(16)

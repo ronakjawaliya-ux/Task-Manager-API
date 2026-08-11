@@ -1,17 +1,17 @@
-### Login - correct credentials
-POST http://127.0.0.1:5000/login
+### Fresh test register
+POST http://127.0.0.1:5000/register
 Content-Type: application/json
 
 {
-  "username": "ronak123",
-  "password": "mypassword123"
+  "username": "debuguser",
+  "password": "debugpass123"
 }
 
-### Login - wrong password
+### Fresh test login
 POST http://127.0.0.1:5000/login
 Content-Type: application/json
 
 {
-  "username": "ronak123",
-  "password": "wrongpassword"
+  "username": "debuguser",
+  "password": "debugpass123"
 }
